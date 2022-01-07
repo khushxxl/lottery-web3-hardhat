@@ -31,6 +31,8 @@ export const LotteryProvider = ({ children }) => {
   }
 
   useEffect(async () => {
+    if (!window.ethereum) return alert('Install Metamsk To Proceed')
+
     const lotteryContract = await getEthereumContract()
     const managerResult = await lotteryContract.manager().then((result) => {
       return result
